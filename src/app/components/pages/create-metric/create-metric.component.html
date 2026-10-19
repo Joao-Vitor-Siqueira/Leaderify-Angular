@@ -1,0 +1,73 @@
+<div class="formContainer">
+    @if (createLb) {
+      <h2>Create Leaderboard</h2>
+    }
+    @else {
+      <h2>Create Metric</h2>
+    }
+  <form action="">
+    <div class="form-field">
+      <label for="metricName"> Metric name: </label>
+      <input type="text" maxlength="30" id="metricName" name="metricName" required [(ngModel)] = "metricName"/>
+    </div>
+
+    <div class="form-field">
+      <label for="metricDescription"> Description: </label>
+      <textarea id="metricDescription" maxlength="50" name="metricDescription" [(ngModel)] = "metricDesc"></textarea>
+    </div>
+
+    <div class="form-field">
+      <label for="metricOrder">Order</label>
+      <select class="orderSelect" name="metricOrder" id="metricOrder" [(ngModel)] = "metricOrder">
+        <option value="DESC" selected>Descending</option>
+        <option value="ASC">Ascending</option>
+      </select>
+    </div>
+
+    <div class="addButtonContainer">
+      <app-icon-button title="Add" [handleClick]="() => addMetric()"></app-icon-button>
+    </div>
+
+  </form>
+
+  <div class="nextButtonContainer">
+    <app-icon-button title="Finish" [handleClick]="() => finish()"></app-icon-button>
+  </div>
+
+  @for (error of errors(); track $index) {
+    <div class="errorMsg">
+      {{error}}
+    </div>
+  }
+
+  <div class="tableContainer">
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Order</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (metric of metrics(); track $index) {
+          <tr>
+            <td>{{metric.name}}</td>
+            <td>{{metric.description}}</td>
+            <td>{{orders()[$index]}}</td>
+            <td>
+              <div class="deleteButtonContainer">
+                <app-icon-button title="X" [handleClick]="() => removeMetric(metric.name)"></app-icon-button>
+              </div>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="closeButtonContainer">
+  <app-icon-button title="X" [handleClick]="() => closeDialogEvent()"></app-icon-button>
+</div>

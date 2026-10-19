@@ -1,0 +1,54 @@
+<div class="leaderboardsContainer">
+  <div class="content">
+    <div class="searchContainer">
+      <app-search-bar (search)="onSearch($event)"></app-search-bar>
+      <div class="buttonContainer">
+        <app-icon-button
+          [handleClick]="() => openDialog('createLeaderboard')"
+          title="New Leaderboard"
+        ></app-icon-button>
+      </div>
+    </div>
+    <div class="leaderboardsList">
+      @if(loading()){
+        <div class="loadingContainer">
+          <app-loading [title]="'leaderboards'"/>
+        </div>
+      }
+      @else {
+      <app-list-view
+        (handleRowClick)="goToLeaderboardPage($event)"
+        (newPage)="onPageChange($event)"
+        (deleteLb)="openDeleteDialog($event)"
+        [headers]="headers"
+        [data]="data()"
+        [pageNumber]="page"
+        [totalPages]="totalPages"
+      ></app-list-view>
+      }
+    </div>
+  </div>
+</div>
+
+<dialog class="lbDialog" #dialog data-name="createLeaderboard">
+  <app-create-leaderboard
+    (closeDialog)="closeDialog($event)"
+    (newLb)="openMetricsDialog($event)"
+  ></app-create-leaderboard>
+</dialog>
+
+<dialog class="metricDialog" #dialog data-name="createMetrics">
+  <app-create-metric
+    (closeDialog)="closeDialog($event)"
+    (newMetrics)="createLeaderboard($event)"
+    [createLb]="true"
+  ></app-create-metric>
+</dialog>
+
+<dialog #dialog data-name="deleteDialog" class="deleteDialog">
+  <h2>Delete Leaderboard</h2>
+  <div class="deleteContainer">
+    <app-icon-button title="Cancel" [handleClick]="() => closeDialog('deleteDialog')"></app-icon-button>
+    <app-icon-button title="Delete" [handleClick]="() => deleteLeaderboard()"></app-icon-button>
+  </div>
+</dialog>

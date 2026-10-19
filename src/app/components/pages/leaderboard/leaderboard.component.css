@@ -1,0 +1,47 @@
+.leaderboardContainer{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 4rem 1.5rem;
+}
+
+.outlet{
+  height: 100%;
+  width: 55%;
+  padding-bottom: 1.5rem;
+}
+
+.lbMenuContainer{
+  height: 100%;
+  width: 15%;
+  padding-bottom: 1.5rem;
+}
+
+@media (max-width: 1100px) {
+  .lbMenuContainer{
+    width: 20%;
+  }
+}
+
+@media (max-width: 800px) {
+  .lbMenuContainer{
+    width: 25%;
+  }
+}
+
+@media (max-width: 800px) {
+  .leaderboardContainer{
+    flex-direction: column;
+  }
+  .outlet{
+    height: 75%;
+    width: 100%;
+  }
+
+  .lbMenuContainer{
+    height: 25%;
+    width: 100%;
+  }
+}

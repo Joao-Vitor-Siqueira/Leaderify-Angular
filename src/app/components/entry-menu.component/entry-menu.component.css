@@ -1,0 +1,150 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.buttonContainer{
+  width: 12rem;
+  align-self: flex-end;
+}
+
+
+.entryMenuContainer{
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  height: 100%;
+  border-radius: 0.5rem;
+  background-color: var(--color-primary-4);
+  padding: 1rem;
+  color: var(--color-white);
+}
+
+.loadingContainer{
+  margin-block: auto;
+}
+
+.tableContainer {
+  position: relative;
+  height: 80%;
+  overflow: auto;
+  border: 1px solid var(--color-primary-0);
+  border-radius: 0.5rem;
+}
+
+thead{
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  table-layout: fixed;
+}
+
+
+th{
+  background: var(--color-primary-4);
+  padding: 0.5rem;
+  border-right: 1px solid var(--color-primary-0);
+  border-bottom: 1px solid var(--color-primary-0);
+}
+
+td{
+  min-width: 0;
+  overflow: hidden;
+  padding: 0.5rem;
+  border-right: 1px solid var(--color-primary-0);
+}
+
+.tdContainer{
+  width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+  box-sizing: border-box;
+}
+
+.deleteButtonContainer{
+  margin-left: auto;
+  margin-right: auto;
+  width: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.delete{
+  text-align: center;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: var(--color-primary-3);
+}
+
+tbody tr:last-child td{
+  border-bottom: 1px solid var(--color-primary-0);
+}
+
+tbody tr:hover:not(:has(td:last-child:hover)){
+  background-color: var(--color-primary-2);
+  cursor: pointer;
+}
+
+dialog {
+  padding: 0;
+  border: 2px solid black;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 40px rgb(0 0 0 / 25%);
+  overflow: hidden;
+  background-color: var(--color-primary-3);
+}
+
+.entryDialog{
+  width: 33%;
+  height: 22rem;
+}
+
+.deleteDialog{
+  width: 15rem;
+  padding: 1rem;
+}
+
+.deleteDialog h2{
+  color: white;
+  margin: 0;
+  font-weight: 400;
+}
+
+.deleteContainer{
+  margin-top: 1rem;
+  width: 100%;
+  gap: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+dialog::backdrop {
+  background: rgb(0 0 0 / 30%);
+  backdrop-filter: blur(8px);
+}
+
+@media (max-width: 1400px) {
+  .entryDialog{
+    width: 50%;
+  }
+}
+
+@media (max-width: 1000px) {
+  .entryDialog{
+    width: 66%;
+  }
+}
+
+@media (max-width: 640px) {
+  .entryDialog{
+    width: 80%;
+  }
+}

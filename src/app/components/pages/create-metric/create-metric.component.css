@@ -1,0 +1,206 @@
+:host {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  overflow: scroll;
+}
+
+
+h2{
+  margin: 0;
+  color: var(--color-white);
+  font-weight: 400;
+  margin-left: 1.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.formContainer{
+  width: 100%;
+  height: 100%;
+  border-radius: 0.5rem;
+  background-color: var(--color-primary-3);
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  overflow: scroll;
+}
+
+.deleteButtonContainer{
+  margin-left: auto;
+  margin-right: auto;
+  width: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+form{
+  width: 100%;
+  padding: 0 1.5rem;
+  display: grid;
+  align-items: end;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  gap: 0.5rem;
+}
+
+.errorMsg{
+  margin-top: 1rem;
+  color: red;
+  align-self: center;
+}
+
+.form-field label {
+  display: block;
+
+  margin-bottom: 0.25rem;
+
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+
+  color: var(--color-white);
+}
+
+.form-field input, textarea, select {
+  box-sizing: border-box;
+
+  display: block;
+
+  width: 100%;
+
+  padding: 0.5rem 0.75rem;
+  font-family: "MS Shell Dlg 2";
+
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+
+  height: 2.5rem;
+
+  color: var(--color-white);
+
+  background-color: var(--color-primary-4);
+
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease;
+
+  outline: none;
+  resize: none;
+}
+
+.orderSelect{
+  height: 2.5rem;
+}
+
+.form-field input::placeholder {
+  color: #94a3b8;
+}
+
+.closeButtonContainer{
+  height: 2rem;
+  width: 2rem;
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+}
+
+select{
+  font-size: 1rem;
+  height: 2rem;
+}
+
+select:hover{
+  cursor: pointer;
+}
+
+.nextButtonContainer{
+  width: 4rem;
+  position: absolute;
+  margin-bottom: 0.5rem;
+  margin-right: 0.5rem;
+  bottom: 0;
+  right: 0;
+}
+
+.addButtonContainer{
+  width: 66%;
+  height: 2.5rem;
+}
+
+.tableContainer{
+  height: 50%;
+  background-color: var(--color-primary-4);
+  border: 1px solid white;
+  overflow: auto;
+  align-self: center;
+  margin-top: 5%;
+  grid-column: 1 / -1;
+  width: 80%;
+  border-radius: 0.5rem;
+}
+
+table{
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--color-white);
+  table-layout: fixed;
+}
+
+thead{
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background-color: var(--color-primary-4);
+}
+
+th{
+  border-bottom: 1px solid var(--color-primary-0);
+  padding: 1rem;
+}
+
+td{
+  padding: 0.5rem;
+  text-align: center;
+  background: transparent;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: var(--color-primary-3);
+}
+
+@media (max-width: 1000px) {
+  form{
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .addButtonContainer{
+    width: 100%;
+  }
+
+  .tableContainer{
+    margin-bottom: 5rem;
+  }
+}
+
+@media (max-height: 900px) {
+  .tableContainer{
+    height: 15rem;
+    margin-bottom: 5rem;
+  }
+
+}

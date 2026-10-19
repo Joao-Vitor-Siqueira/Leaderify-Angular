@@ -1,0 +1,166 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.lbViewContainer {
+  height: 100%;
+  border-radius: 0.5rem;
+  background-color: var(--color-primary-4);
+  padding: 1rem;
+  color: var(--color-white);
+  display: flex;
+  flex-direction: column;
+}
+
+.loadingContainer{
+  margin-block: auto;
+}
+
+.tableContainer {
+  height: 90%;
+  overflow: auto;
+  border: 1px solid var(--color-primary-0);
+  border-radius: 0.5rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+thead{
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+th{
+  background: var(--color-primary-4);
+  padding: 0.5rem;
+  border-right: 1px solid var(--color-primary-0);
+  border-bottom: 1px solid var(--color-primary-0);
+}
+
+td{
+  padding: 0.5rem;
+  border-right: 1px solid var(--color-primary-0);
+}
+
+tbody tr:nth-child(odd) {
+  background-color: var(--color-primary-3);
+}
+
+tbody tr:hover{
+  background-color: var(--color-primary-2);
+  cursor: pointer;
+}
+
+.lbViewFooter div.selector:hover {
+  background-color: var(--color-primary-2);
+  cursor: pointer;
+}
+
+tbody tr, .lbViewFooter div {
+  transition: background-color 75ms ease;
+}
+
+tbody td {
+  background-color: transparent;
+}
+
+th:last-child,
+td:last-child {
+  border-right: none;
+}
+
+tbody tr:last-child td{
+  border-bottom: 1px solid var(--color-primary-0);
+}
+
+.lbViewFooterContainer{
+  height: 10%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lbViewFooter{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  margin-top: 1rem;
+  color: var(--color-white);
+}
+
+.lbViewFooter div{
+    font-size: 1.25rem;
+    border: 1px solid var(--color-white);
+    padding: 0.2rem 0.75rem;
+    border-radius: 0.25rem;
+    background-color: var(--color-primary-3);
+}
+
+.lbViewFooter div img {
+    width: 1rem;
+    height: 1rem;
+    object-fit: contain;
+    pointer-events: none;
+}
+
+.lbViewFooter div.selector:active{
+  transform: scale(0.9);
+}
+
+.next{
+  transform: scaleX(-1);
+}
+
+.lbViewFooter div.selected{
+  background-color: var(--color-primary-2);
+}
+
+dialog {
+  padding: 0;
+  border: 2px solid black;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 40px rgb(0 0 0 / 25%);
+  overflow: hidden;
+  background-color: var(--color-primary-3);
+  width: 33%;
+  height: 50%;
+}
+
+dialog::backdrop {
+  background: rgb(0 0 0 / 30%);
+  backdrop-filter: blur(8px);
+}
+
+@media (max-width: 1400px) {
+  dialog{
+    width: 50%;
+  }
+}
+
+@media (max-width: 1000px) {
+  dialog{
+    width: 66%;
+  }
+}
+
+@media (max-width: 800px) {
+  dialog{
+    width: 80%;
+  }
+}
+@media (max-height: 900px) {
+  dialog{
+    height: 25rem;
+  }
+}
+

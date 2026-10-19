@@ -1,0 +1,125 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.listViewContainer {
+  height: 100%;
+  border-radius: 0.5rem;
+  background-color: var(--color-primary-4);
+  padding: 1rem;
+  color: var(--color-white);
+}
+
+.tableContainer {
+  height: 90%;
+  overflow: auto;
+  border: 1px solid var(--color-primary-0);
+  border-radius: 0.5rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+thead{
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+.deleteButtonContainer{
+  margin-left: auto;
+  margin-right: auto;
+  width: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+th{
+  background: var(--color-primary-4);
+  padding: 0.5rem;
+  border-right: 1px solid var(--color-primary-0);
+  border-bottom: 1px solid var(--color-primary-0);
+}
+
+td{
+  padding: 0.5rem;
+  border-right: 1px solid var(--color-primary-0);
+}
+
+tbody tr:nth-child(odd) {
+  background-color: var(--color-primary-3);
+}
+
+tbody tr:hover,.listViewFooter div.selector:hover {
+  background-color: var(--color-primary-2);
+  cursor: pointer;
+}
+
+tbody tr, .listViewFooter div {
+  transition: background-color 75ms ease;
+}
+
+tbody td {
+  background-color: transparent;
+}
+
+th:last-child,
+td:last-child {
+  border-right: none;
+}
+
+tbody tr:last-child td{
+  border-bottom: 1px solid var(--color-primary-0);
+}
+
+.listViewFooterContainer{
+  height: 10%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.listViewFooter{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  margin-top: 1rem;
+  color: var(--color-white);
+}
+
+.listViewFooter div{
+    font-size: 1.25rem;
+    border: 1px solid var(--color-white);
+    padding: 0.2rem 0.75rem;
+    border-radius: 0.25rem;
+    background-color: var(--color-primary-3);
+}
+
+.listViewFooter div img {
+    width: 1rem;
+    height: 1rem;
+    object-fit: contain;
+    pointer-events: none;
+}
+
+.listViewFooter div.selector:active{
+  transform: scale(0.9);
+}
+
+.next{
+  transform: scaleX(-1);
+}
+
+.listViewFooter div.selected{
+  background-color: var(--color-primary-2);
+}
+

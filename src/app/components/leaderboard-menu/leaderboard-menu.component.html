@@ -1,0 +1,8 @@
+<div class="lbMenuContainer">
+  <h2>{{leaderboard.name}}</h2>
+  @for (btnConfig of buttonConfigs; track $index) {
+    <div class="buttonContainer">
+      <app-icon-button [title]="btnConfig.title" [handleClick]="btnConfig.handleClick"></app-icon-button>
+    </div>
+  }
+</div>

@@ -1,0 +1,33 @@
+<h2>{{title}}</h2>
+<div class="formContainer">
+  <form action="">
+      <div class="form-field">
+        <label for="metricName"> Metric name: </label>
+        <input maxlength="50" type="text" id="metricName" name="metricName" required [(ngModel)]="metricConfig.metric!.name" />
+      </div>
+      <div class="form-field">
+        <label for="metricDescription"> Description: </label>
+        <textarea maxlength="50" id="metricDescription" name="metricDescription" [(ngModel)] = "metricConfig.metric!.description"></textarea>
+      </div>
+      <div class="form-field">
+        <label for="metricOrder">Order</label>
+        <select class="orderSelect" name="metricOrder" id="metricOrder" [(ngModel)] = "metricConfig.viewMetricConfig!.sort">
+          <option value="DESC">Descending</option>
+          <option value="ASC">Ascending</option>
+        </select>
+      </div>
+      @if (metricConfig.metric!.id !== -1) {
+        <div class="form-field">
+          <label for="metricPosition">Position</label>
+          <input id="metricPosition" name="metricPosition" type="text" [(ngModel)] = "metricConfig.viewMetricConfig!.position" [value]="metricConfig.viewMetricConfig!.position" (input)="validatePosition($event)" inputmode="numeric"/>
+        </div>
+      }
+    </form>
+  </div>
+
+<div class="buttonContainer">
+  <app-icon-button title="Save" [handleClick]="() => validateForm()"></app-icon-button>
+</div>
+<div class="closeButtonContainer">
+  <app-icon-button title="X" [handleClick]="() => closeDialog.emit()"></app-icon-button>
+</div>

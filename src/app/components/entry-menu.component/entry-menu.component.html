@@ -1,0 +1,48 @@
+<div class="entryMenuContainer">
+  <div class="buttonContainer">
+    <app-icon-button title="New Entry" [handleClick]="() => openEntryDialog(-1)"></app-icon-button>
+  </div>
+  @if (loading()) {
+    <div class="loadingContainer">
+      <app-loading [title]="'entries'"/>
+    </div>
+  }
+  @else {
+    <div class="tableContainer">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (entry of entries(); track $index) {
+            <tr (click)="openEntryDialog(entry.id)">
+              <td><div class="tdContainer">{{entry.name}}</div></td>
+              <td><div class="tdContainer">{{entry.description}}</div></td>
+              <td class="delete" (click)="$event.stopPropagation()">
+                <div class="deleteButtonContainer">
+                  <app-icon-button title="X" [handleClick]="() => openDeleteDialog(entry.id)"></app-icon-button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>
+
+<dialog #dialog data-name="entryDialog" class="entryDialog">
+  <app-entry-form [title]="dialogTitle()" (formPassed)="createUpdateEntry($event)" (closeDialog)="closeDialog('entryDialog')" [entry]="selectedEntry()"></app-entry-form>
+</dialog>
+
+<dialog #dialog data-name="deleteDialog" class="deleteDialog">
+  <h2>Delete Entry</h2>
+  <div class="deleteContainer">
+    <app-icon-button title="Cancel" [handleClick]="() => closeDialog('deleteDialog')"></app-icon-button>
+    <app-icon-button title="Delete" [handleClick]="() => deleteEntry()"></app-icon-button>
+  </div>
+</dialog>

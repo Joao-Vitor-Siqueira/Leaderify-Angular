@@ -1,0 +1,134 @@
+.leaderboardsContainer{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 4rem 1.5rem;
+}
+
+
+.content{
+  height: 100%;
+  width: 55%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.leaderboardsList{
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-primary-4);
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.loadingContainer{
+  margin-block: auto;
+  color: white;
+}
+
+.buttonContainer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 33%;
+  height: 2.5rem;
+  background-color: var(--color-primary-4);
+}
+
+.searchContainer{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 1.5rem;
+}
+
+.lbDialog {
+  padding: 0;
+  border: 2px solid black;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 40px rgb(0 0 0 / 25%);
+  overflow: hidden;
+  background-color: var(--color-primary-3);
+  width: 33%;
+  height: 33%;
+}
+
+.metricDialog{
+  padding: 0;
+  border-radius: 0.5rem;
+  border: 2px solid black;
+  box-shadow: 0 10px 40px rgb(0 0 0 / 25%);
+  background-color: var(--color-primary-3);
+  width: 66%;
+  height: 66%;
+  overflow: hidden;
+}
+
+dialog::backdrop {
+  background: rgb(0 0 0 / 30%);
+  backdrop-filter: blur(8px);
+}
+
+.deleteDialog{
+  width: 20rem;
+  padding: 1rem;
+  background-color: var(--color-primary-3);
+}
+
+.deleteDialog h2{
+  color: white;
+  margin: 0;
+  font-weight: 400;
+}
+
+.deleteContainer{
+  margin-top: 1rem;
+  width: 100%;
+  gap: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+@media (max-width: 1300px) {
+  .content{
+    width: 80%;
+  }
+}
+
+@media (max-width: 640px) {
+  .content{
+    width: 100%;
+  }
+}
+
+
+@media (max-width: 1400px) {
+  .lbDialog{
+    width: 50%;
+  }
+}
+
+@media (max-width: 1000px) {
+  .lbDialog, .metricDialog{
+    width: 66%;
+  }
+}
+
+@media (max-width: 800px) {
+  .lbDialog, .metricDialog{
+    width: 80%;
+  }
+}
+@media (max-height: 900px) {
+  .lbDialog{
+    height: 20rem;
+  }
+  .metricDialog{
+    height: 30rem;
+  }
+}

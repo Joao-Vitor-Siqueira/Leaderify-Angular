@@ -1,1 +1,29 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --color-primary-0: #B9D6F2;
+  --color-primary-1: #006DAA;
+  --color-primary-2: #0353A4;
+  --color-primary-3: #003559;
+  --color-primary-4: #061A40;
+  --color-white: #ffffff;
+
+  --navbar-height: 4rem;
+
+  --font-sans: ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    "Noto Color Emoji";
+
+}
+
+*{
+  box-sizing: border-box;
+}
+
+body{
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-primary-3);
+  font-family: var(--font-sans);
+}
+
+

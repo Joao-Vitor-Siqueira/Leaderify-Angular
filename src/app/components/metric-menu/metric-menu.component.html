@@ -1,0 +1,59 @@
+<div class="metricMenuContainer">
+  <div class="buttonContainer">
+    <app-icon-button title="New Metric" [handleClick]="() => openMetricsDialog(-1,-1)"></app-icon-button>
+  </div>
+  @if (loading()) {
+    <div class="loadingContainer">
+      <app-loading [title]="'metrics'" />
+    </div>
+  }
+  @else {
+    <div class="tableContainer">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Position</th>
+            <th>Order</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (metricConfig of metrics(); track $index) {
+            <tr
+              (click)="
+                openMetricsDialog(metricConfig.metric?.id!, metricConfig.viewMetricConfig?.id!)
+              "
+            >
+              <td><div class="tdContainer">{{ metricConfig.metric!.name }}</div></td>
+              <td><div class="tdContainer">{{ metricConfig.metric!.description }}</div></td>
+              <td><div class="tdContainer">{{ metricConfig.viewMetricConfig!.position }}</div></td>
+              <td><div class="tdContainer">{{ metricConfig.viewMetricConfig!.sort }}</div></td>
+              <td class="delete" (click)="$event.stopPropagation()">
+                <div class="deleteButtonContainer">
+                  <app-icon-button title="X" [handleClick]="() => openDeleteDialog(metricConfig.metric!.id)"></app-icon-button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>
+
+<dialog #dialog data-name="metricsDialog" class="metricsDialog">
+  <app-metric-form [title]="dialogTitle()" (showError)="showErrorMsg($event)" (formPassed)="createUpdateMetric($event)" (closeDialog)="closeDialog('metricsDialog')" [metricConfig]="selectedMetricConfig()" [totalMetrics]="metrics().length"></app-metric-form>
+  @if(errorMsg().length){
+    <div class="error">{{errorMsg()}}</div>
+  }
+</dialog>
+
+<dialog #dialog data-name="deleteDialog" class="deleteDialog">
+  <h2>Delete Metric</h2>
+  <div class="deleteContainer">
+    <app-icon-button title="Cancel" [handleClick]="() => closeDialog('deleteDialog')"></app-icon-button>
+    <app-icon-button title="Delete" [handleClick]="() => deleteMetric()"></app-icon-button>
+  </div>
+</dialog>

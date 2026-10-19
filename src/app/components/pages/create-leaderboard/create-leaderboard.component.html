@@ -1,0 +1,28 @@
+<div class="formContainer">
+    <h2>Create Leaderboard</h2>
+    <form action="">
+      <div class="form-field">
+      <label for="lbName"> Leaderboard name: </label>
+      <input maxlength="30" type="text" id="lbName" name="lbName" required  [(ngModel)]="lbName" />
+      @for (error of errors(); track $index) {
+        <div class="errorMsg">
+          {{error}}
+        </div>
+      }
+    </div>
+
+    <div class="form-field">
+      <label for="lbDescription"> Description: </label>
+      <textarea maxlength="50" id="lbDescription" name="lbDescription"  [(ngModel)]="lbDescription"></textarea>
+    </div>
+  </form>
+
+  <div class="nextButtonContainer">
+    <app-icon-button title="Next" [handleClick]="() => nextFormEvent()"></app-icon-button>
+  </div>
+
+</div>
+
+<div class="closeButtonContainer">
+  <app-icon-button [handleClick]="() => closeDialogEvent()" title="X"></app-icon-button>
+</div>

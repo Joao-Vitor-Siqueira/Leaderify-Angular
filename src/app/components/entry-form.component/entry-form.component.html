@@ -1,0 +1,25 @@
+<h2>{{title}}</h2>
+<div class="formContainer">
+  <form action="">
+      <div class="form-field">
+        <label for="entryName"> Entry name: </label>
+        <input maxlength="30" type="text" id="entryName" name="entryName" required [(ngModel)]="entry.name" />
+      </div>
+      <div class="form-field">
+        <label for="entryDescription"> Description: </label>
+        <textarea maxlength="50" id="entryDescription" name="entryDescription" [(ngModel)] = "entry.description"></textarea>
+      </div>
+      <div class="errors">
+        @for (error of errors(); track $index) {
+          <div>{{error}}</div>
+        }
+      </div>
+    </form>
+  </div>
+
+<div class="buttonContainer">
+  <app-icon-button title="Save" [handleClick]="() => validateForm()"></app-icon-button>
+</div>
+<div class="closeButtonContainer">
+  <app-icon-button title="X" [handleClick]="() => closeDialog.emit()"></app-icon-button>
+</div>

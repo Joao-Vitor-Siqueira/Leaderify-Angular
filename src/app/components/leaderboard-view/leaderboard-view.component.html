@@ -1,0 +1,39 @@
+<div class="lbViewContainer">
+  @if (state.loading()) {
+    <div class="loadingContainer">
+      <app-loading [title]="'leaderboard'" />
+    </div>
+  } @else {
+    <div class="tableContainer">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            @for (header of headers(); track $index) {
+              <th>{{ header }}</th>
+            }
+          </tr>
+        </thead>
+
+        <tbody>
+          @for (element of rows(); track $index) {
+            <tr (click)="openDialog('valueDialog', element)">
+              <td>{{ element.position }} - {{ element.name }}</td>
+              @for (score of element.scores; track $index) {
+                <td>{{ score.value }}</td>
+              }
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>
+
+<dialog #dialog data-name="valueDialog">
+  <app-value-form
+    [entryMetricValue]="selectedEntryMetricValue()"
+    (formPassed)="updateValue($event)"
+    (closeDialog)="closeDialog('valueDialog')"
+  ></app-value-form>
+</dialog>

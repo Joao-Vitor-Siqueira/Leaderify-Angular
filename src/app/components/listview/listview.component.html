@@ -1,0 +1,60 @@
+<div class="listViewContainer">
+  <div class="tableContainer">
+    <table>
+
+      <thead>
+        <tr>
+          @for (header of headers; track $index) {
+            <th>{{ header.header }}</th>
+          }
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        @for (element of data?.content ?? []; track element.id) {
+          <tr>
+            @for (header of headers; track header.key) {
+                @if(header.header === "Created" || header.header === "Updated"){
+                  <td (click)="goToElementPage(element.id)">{{formatDate(element[header.key])}}</td>
+                }
+                @else{
+                  <td (click)="goToElementPage(element.id)">{{element[header.key]}}</td>
+                }
+            }
+            <td class="delete" (click)="$event.stopPropagation()">
+                <div class="deleteButtonContainer">
+                  <app-icon-button title="X" [handleClick]="() => deleteLeaderboard(element.id)"></app-icon-button>
+                </div>
+            </td>
+          </tr>
+        }
+      </tbody>
+
+    </table>
+  </div>
+
+
+  <div class="listViewFooterContainer">
+    <div class="listViewFooter">
+
+      @if(pageNumber != 0){
+        <div class="selector" (click)="previousPage()">
+          <img src="/svg/arrow-prev-svgrepo-com.svg" alt="previous" />
+        </div>
+        <div>{{pageNumber}}</div>
+      }
+
+      <div class="selected">{{pageNumber + 1}}</div>
+
+      @if(pageNumber < totalPages - 1){
+        <div>{{pageNumber + 2}}</div>
+        <div class="selector" (click)="nextPage()">
+          <img class="next" src="/svg/arrow-prev-svgrepo-com.svg" alt="next" />
+        </div>
+      }
+
+    </div>
+  </div>
+
+</div>

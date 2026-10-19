@@ -1,0 +1,34 @@
+<h2>
+  {{
+    entryMetricValue.name.length > 20
+      ? entryMetricValue.name.slice(0, 20) + '...'
+      : entryMetricValue.name
+  }}
+</h2>
+<div class="formContainer">
+  <form action="">
+    @for (metricValue of entryMetricValue.scores; track $index) {
+      <div class="form-field">
+        <label [for]="'metricValue' + metricValue.valueId">{{
+          metricValue.name.length > 20 ? metricValue.name.slice(0, 20) + '...' : metricValue.name
+        }}</label>
+        <input
+          type="text"
+          inputmode="numeric"
+          [id]="'metricValue' + metricValue.valueId"
+          [name]="'metricValue' + metricValue.valueId"
+          [(ngModel)]="metricValue.value"
+          [value]="metricValue.value"
+          (input)="validateInput($event, metricValue)"
+        />
+      </div>
+    }
+  </form>
+</div>
+
+<div class="buttonContainer">
+  <app-icon-button title="Save" [handleClick]="() => validateForm()"></app-icon-button>
+</div>
+<div class="closeButtonContainer">
+  <app-icon-button title="X" [handleClick]="() => closeDialog.emit()"></app-icon-button>
+</div>
