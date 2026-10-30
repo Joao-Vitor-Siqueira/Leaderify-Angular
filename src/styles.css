@@ -23,7 +23,33 @@ body{
   margin: 0;
   padding: 0;
   background-color: var(--color-primary-3);
-  font-family: var(--font-sans);
+  font-family:var(--font-sans);
 }
 
 
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 0.5rem; /* Rectangular corners */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+::-webkit-scrollbar-button {
+    display: none;
+}
+
+.formContainer::-webkit-scrollbar-corner {
+  background: transparent;
+}
