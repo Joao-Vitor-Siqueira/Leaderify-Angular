@@ -50,6 +50,6 @@ body{
     display: none;
 }
 
-.formContainer::-webkit-scrollbar-corner {
+::-webkit-scrollbar-corner {
   background: transparent;
 }
